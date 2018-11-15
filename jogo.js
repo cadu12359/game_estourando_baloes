@@ -29,7 +29,7 @@ function iniciaJogo(){
 
 	//imprimir qdte baloes inteiros 
 	document.getElementById('baloes_inteiros').innerHTML = qtde_baloes;
-	document.getElementById('baloes_estourador').innerHTML = 0;
+	document.getElementById('baloes_estourados').innerHTML = 0;
 
 	contagem_tempo(tempo_segundos + 1);
 	
@@ -77,4 +77,20 @@ function estourar(e){
 
 	document.getElementById(id_balao).src = "imagens/balao_azul_pequeno_estourado.png";
 
+	pontuacao(-1);
+}
+
+function pontuacao(acao){
+
+	var baloes_inteiros = document.getElementById('baloes_inteiros').innerHTML;
+	var baloes_estourados = document.getElementById('baloes_estourados').innerHTML;
+
+	baloes_inteiros = parseInt(baloes_inteiros);
+	baloes_estourados = parseInt(baloes_estourados);
+
+	baloes_inteiros = baloes_inteiros + acao;
+	baloes_estourados = baloes_estourados - acao;
+
+	document.getElementById('baloes_inteiros').innerHTML = baloes_inteiros;
+	document.getElementById('baloes_estourados').innerHTML = baloes_estourados;
 }
