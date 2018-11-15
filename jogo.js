@@ -75,6 +75,7 @@ function estourar(e){
 
 	var id_balao = e.id;
 
+	document.getElementById(id_balao).setAttribute("onclick", "");
 	document.getElementById(id_balao).src = "imagens/balao_azul_pequeno_estourado.png";
 
 	pontuacao(-1);
@@ -93,4 +94,17 @@ function pontuacao(acao){
 
 	document.getElementById('baloes_inteiros').innerHTML = baloes_inteiros;
 	document.getElementById('baloes_estourados').innerHTML = baloes_estourados;
+
+	situacao_jogo(baloes_inteiros);
+}
+
+function situacao_jogo(baloes_inteiros){
+	if (baloes_inteiros == 0) {
+		alert('Parabés, você conseguiu estourar todos os baloes a tempo');
+		parar_jogo();
+	}
+}
+
+function parar_jogo(){
+	clearTimeout(timerId);
 }
