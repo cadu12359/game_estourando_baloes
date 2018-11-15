@@ -31,7 +31,7 @@ function iniciaJogo(){
 	document.getElementById('baloes_inteiros').innerHTML = qtde_baloes;
 	document.getElementById('baloes_estourador').innerHTML = 0;
 
-	contagem_tempo(5);
+	contagem_tempo(tempo_segundos + 1);
 	
 }
 
@@ -41,12 +41,17 @@ function contagem_tempo(segundos){
 
 	if (segundos == -1){
 		clearTimeout(timerId);
+		game_over();
 		return false;
 	}
 
 	document.getElementById('cronometro').innerHTML = segundos;
 
 	timerId = setTimeout("contagem_tempo("+segundos+")", 1000);
+}
+
+function game_over(){
+	alert('Fim de jogo, você não conseguiu estourar todos os balões a tempo');
 }
 
 function cria_baloes(qtde_baloes){
